@@ -1,0 +1,16 @@
+- name: AWX Demo for Infinibox
+  hosts: localhost
+  collections: infinidat.infinibox
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - name: Add iSCSI Port IQN
+    infini_port:
+      host: "{{host_name}}"
+      state: present
+      iqns:
+        - "{{iscsi_iqn}}"
+      user: "{{user}}"
+      password: "{{password}}"
+      system: "{{array_ip}}"

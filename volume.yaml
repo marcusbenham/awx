@@ -1,0 +1,18 @@
+- name: AWX Provisioning Demo for Infinibox
+  hosts: localhost
+  collections: infinidat.infinibox
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - name: Create new volume 
+    infini_vol:
+      name: "{{vol_name}}"
+      # volume_type: master  # Default
+      size: "{{size}}"
+      thin_provision: "{{thin}}"
+      pool: "{{pool}}"
+      state: present
+      user: "{{user}}"
+      password: "{{password}}"
+      system: "{{array_ip}}"

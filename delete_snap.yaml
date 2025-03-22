@@ -1,0 +1,14 @@
+- name: AWX Snapshot Demo for Infinibox
+  hosts: localhost
+  collections: infinidat.infinibox
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - name: Create snapshot 
+    infini_vol:
+      name: "{{snap_name}}"
+      state: absent
+      user: "{{user}}"
+      password: "{{password}}"
+      system: "{{array_ip}}"

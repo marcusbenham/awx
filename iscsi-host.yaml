@@ -1,0 +1,10 @@
+- name: AWX Demo for Infinibox
+  hosts: iscsi-host
+  gather_facts: no
+
+  tasks:
+  - name: Connect host to Infinibox
+    ansible.builtin.shell: |
+      iscsiadm -m discovery -t sendtargets -p {{ iscsi_portal }}
+      iscsiadm --mode node --portal {{ iscsi_portal }} --login
+      rescan-scsi-bus.sh

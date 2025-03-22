@@ -1,0 +1,17 @@
+- name: AWX Demo for Infinibox
+  hosts: localhost
+  collections: infinidat.infinibox
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - name: Create new file system
+    infini_fs:
+      name: "{{fs_name}}"
+      size: "{{size}}"
+      pool: "{{pool}}"
+      thin_provision: "{{thin}}"
+      state: present
+      user: "{{user}}"
+      password: "{{password}}"
+      system: "{{array_ip}}"
